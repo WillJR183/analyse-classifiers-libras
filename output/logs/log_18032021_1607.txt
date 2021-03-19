@@ -1,0 +1,268 @@
+[INFO][INICIO] executando Script...
+20210318_1607
+
+[INFO] preparando e aumentando conjunto de dados...
+
+Found 27774 images belonging to 21 classes.
+Found 6940 images belonging to 21 classes.
+Found 11548 images belonging to 21 classes.
+[INFO] informações dos dados de treino...
+
+image batch shape:  (32, 64, 64, 3)
+label batch shape:  (32, 21)
+['A' 'B' 'C' 'D' 'E' 'F' 'G' 'I' 'L' 'M' 'N' 'O' 'P' 'Q' 'R' 'S' 'T' 'U'
+ 'V' 'W' 'Y']
+
+[INFO] compilando o modelo...
+
+
+[INFO] imprimindo estrutura do modelo...
+
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 64, 64, 16)        448       
+_________________________________________________________________
+activation (Activation)      (None, 64, 64, 16)        0         
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 32, 32, 16)        0         
+_________________________________________________________________
+dropout (Dropout)            (None, 32, 32, 16)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 30, 30, 32)        4640      
+_________________________________________________________________
+activation_1 (Activation)    (None, 30, 30, 32)        0         
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 15, 15, 32)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 15, 15, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 13, 13, 64)        18496     
+_________________________________________________________________
+activation_2 (Activation)    (None, 13, 13, 64)        0         
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 6, 6, 64)          0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 6, 6, 64)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 2304)              0         
+_________________________________________________________________
+dense (Dense)                (None, 64)                147520    
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 64)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 21)                1365      
+_________________________________________________________________
+activation_3 (Activation)    (None, 21)                0         
+=================================================================
+Total params: 172,469
+Trainable params: 172,469
+Non-trainable params: 0
+_________________________________________________________________
+
+[INFO] treinando o modelo...
+
+Epoch 1/50
+868/868 - 77s - loss: 1.6608 - acc: 0.4728 - val_loss: 1.0401 - val_acc: 0.6769
+Epoch 2/50
+868/868 - 78s - loss: 0.7154 - acc: 0.7549 - val_loss: 0.8134 - val_acc: 0.7477
+Epoch 3/50
+868/868 - 77s - loss: 0.5209 - acc: 0.8149 - val_loss: 0.6958 - val_acc: 0.7909
+Epoch 4/50
+868/868 - 78s - loss: 0.4276 - acc: 0.8425 - val_loss: 0.6143 - val_acc: 0.8389
+Epoch 5/50
+868/868 - 77s - loss: 0.3573 - acc: 0.8696 - val_loss: 0.5994 - val_acc: 0.8207
+Epoch 6/50
+868/868 - 78s - loss: 0.3053 - acc: 0.8874 - val_loss: 0.5039 - val_acc: 0.8523
+Epoch 7/50
+868/868 - 78s - loss: 0.2690 - acc: 0.9017 - val_loss: 0.5066 - val_acc: 0.8683
+Epoch 8/50
+868/868 - 78s - loss: 0.2448 - acc: 0.9084 - val_loss: 0.5354 - val_acc: 0.8707
+Epoch 9/50
+868/868 - 79s - loss: 0.2242 - acc: 0.9168 - val_loss: 0.4977 - val_acc: 0.8756
+Epoch 10/50
+868/868 - 80s - loss: 0.2035 - acc: 0.9237 - val_loss: 0.5032 - val_acc: 0.8696
+Epoch 11/50
+868/868 - 78s - loss: 0.1915 - acc: 0.9312 - val_loss: 0.5082 - val_acc: 0.8684
+Epoch 12/50
+868/868 - 79s - loss: 0.1779 - acc: 0.9352 - val_loss: 0.6058 - val_acc: 0.8739
+Epoch 13/50
+868/868 - 79s - loss: 0.1686 - acc: 0.9374 - val_loss: 0.5015 - val_acc: 0.8745
+Epoch 14/50
+868/868 - 79s - loss: 0.1556 - acc: 0.9422 - val_loss: 0.4723 - val_acc: 0.8951
+Epoch 15/50
+868/868 - 79s - loss: 0.1518 - acc: 0.9472 - val_loss: 0.5734 - val_acc: 0.8869
+Epoch 16/50
+868/868 - 82s - loss: 0.1435 - acc: 0.9478 - val_loss: 0.4585 - val_acc: 0.8938
+Epoch 17/50
+868/868 - 87s - loss: 0.1348 - acc: 0.9525 - val_loss: 0.4898 - val_acc: 0.8939
+Epoch 18/50
+868/868 - 82s - loss: 0.1277 - acc: 0.9551 - val_loss: 0.5677 - val_acc: 0.8915
+Epoch 19/50
+868/868 - 79s - loss: 0.1193 - acc: 0.9571 - val_loss: 0.5561 - val_acc: 0.8857
+Epoch 20/50
+868/868 - 78s - loss: 0.1133 - acc: 0.9604 - val_loss: 0.4896 - val_acc: 0.8932
+Epoch 21/50
+868/868 - 80s - loss: 0.1115 - acc: 0.9595 - val_loss: 0.5501 - val_acc: 0.8931
+Epoch 22/50
+868/868 - 78s - loss: 0.1105 - acc: 0.9612 - val_loss: 0.4512 - val_acc: 0.9091
+Epoch 23/50
+868/868 - 79s - loss: 0.1032 - acc: 0.9635 - val_loss: 0.6451 - val_acc: 0.8919
+Epoch 24/50
+868/868 - 80s - loss: 0.0951 - acc: 0.9652 - val_loss: 0.5301 - val_acc: 0.9108
+Epoch 25/50
+868/868 - 80s - loss: 0.0955 - acc: 0.9675 - val_loss: 0.6175 - val_acc: 0.8935
+Epoch 26/50
+868/868 - 78s - loss: 0.0935 - acc: 0.9671 - val_loss: 0.5612 - val_acc: 0.8928
+Epoch 27/50
+868/868 - 78s - loss: 0.0901 - acc: 0.9676 - val_loss: 0.5324 - val_acc: 0.9108
+Epoch 28/50
+868/868 - 78s - loss: 0.0918 - acc: 0.9676 - val_loss: 0.4744 - val_acc: 0.9006
+Epoch 29/50
+868/868 - 78s - loss: 0.0746 - acc: 0.9727 - val_loss: 0.6161 - val_acc: 0.9030
+Epoch 30/50
+868/868 - 78s - loss: 0.0857 - acc: 0.9699 - val_loss: 0.5891 - val_acc: 0.8991
+Epoch 31/50
+868/868 - 77s - loss: 0.0769 - acc: 0.9728 - val_loss: 0.5932 - val_acc: 0.8941
+Epoch 32/50
+868/868 - 81s - loss: 0.0834 - acc: 0.9720 - val_loss: 0.5035 - val_acc: 0.9084
+Epoch 33/50
+868/868 - 80s - loss: 0.0750 - acc: 0.9740 - val_loss: 0.5209 - val_acc: 0.9143
+Epoch 34/50
+868/868 - 77s - loss: 0.0715 - acc: 0.9750 - val_loss: 0.5565 - val_acc: 0.9163
+Epoch 35/50
+868/868 - 78s - loss: 0.0718 - acc: 0.9757 - val_loss: 0.5105 - val_acc: 0.9140
+Epoch 36/50
+868/868 - 77s - loss: 0.0710 - acc: 0.9754 - val_loss: 0.5207 - val_acc: 0.9059
+Epoch 37/50
+868/868 - 78s - loss: 0.0723 - acc: 0.9754 - val_loss: 0.5241 - val_acc: 0.9012
+Epoch 38/50
+868/868 - 78s - loss: 0.0709 - acc: 0.9750 - val_loss: 0.5145 - val_acc: 0.9115
+Epoch 39/50
+868/868 - 79s - loss: 0.0676 - acc: 0.9772 - val_loss: 0.5037 - val_acc: 0.9094
+Epoch 40/50
+868/868 - 82s - loss: 0.0658 - acc: 0.9770 - val_loss: 0.4599 - val_acc: 0.9195
+Epoch 41/50
+868/868 - 78s - loss: 0.0664 - acc: 0.9770 - val_loss: 0.4836 - val_acc: 0.9110
+Epoch 42/50
+868/868 - 78s - loss: 0.0672 - acc: 0.9779 - val_loss: 0.5154 - val_acc: 0.9169
+Epoch 43/50
+868/868 - 78s - loss: 0.0669 - acc: 0.9765 - val_loss: 0.4712 - val_acc: 0.9148
+Epoch 44/50
+868/868 - 82s - loss: 0.0676 - acc: 0.9778 - val_loss: 0.4994 - val_acc: 0.9112
+Epoch 45/50
+868/868 - 83s - loss: 0.0609 - acc: 0.9798 - val_loss: 0.5669 - val_acc: 0.9017
+Epoch 46/50
+868/868 - 83s - loss: 0.0590 - acc: 0.9808 - val_loss: 0.7062 - val_acc: 0.8991
+Epoch 47/50
+868/868 - 83s - loss: 0.0563 - acc: 0.9810 - val_loss: 0.5045 - val_acc: 0.9088
+Epoch 48/50
+868/868 - 83s - loss: 0.0588 - acc: 0.9795 - val_loss: 0.4887 - val_acc: 0.9153
+Epoch 49/50
+868/868 - 83s - loss: 0.0581 - acc: 0.9802 - val_loss: 0.5304 - val_acc: 0.9050
+Epoch 50/50
+868/868 - 83s - loss: 0.0578 - acc: 0.9809 - val_loss: 0.4852 - val_acc: 0.9219
+
+[INFO] salvando o modelo...
+
+[INFO] modelo: output/models/cnn_model_libras_v1_20210318_1714.h5 salvo
+[INFO] tempo de execução do modelo: 66.2 min
+[INFO] informações dos dados de teste...
+
+validation batch shape:  (32, 64, 64, 3)
+label batch shape:  (32, 21)
+['A' 'B' 'C' 'D' 'E' 'F' 'G' 'I' 'L' 'M' 'N' 'O' 'P' 'Q' 'R' 'S' 'T' 'U'
+ 'V' 'W' 'Y']
+
+[INFO] avaliando o modelo...
+
+
+1/1 [==============================] - ETA: 0s - loss: 0.0000e+00 - acc: 1.0000
+1/1 [==============================] - 0s 18ms/step - loss: 0.0000e+00 - acc: 1.0000
+Perda do teste:  0.0
+Acurácia do teste:  1.0
+
+Confusion Matrix
+
+[[558   0   0   0  21   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0]
+ [  0 551   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0  11
+    0   0   0]
+ [  0   0 568   0   0   0   0   0   0   0   0  15   0   0   0   0   0   0
+    0   0   0]
+ [  0   0   0 550   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0]
+ [  8  38   0   0 527   0   0   0   0   0   0   0   0   0   0   1   0   0
+    0   0   0]
+ [  0   0   0   0   0 440   0   0   0   0   0   0   0   0   0   0   2   0
+    0   0   8]
+ [  0   0   0   5   0   0 544   1   0   0   0   0   0   0   0   0   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0 548   0   0   0   0   0   0   0   2   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0   3 547   0   0   0   0   0   0   0   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0   0   0 496  34   0   0  20   0   0   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0   0   0  60 473   0   0  17   0   0   0   0
+    0   0   0]
+ [  0   0 112   0   0   0   0   0   0   0   0 438   0   0   0   0   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0 550   0   0   0   0   0
+    0   0   0]
+ [  0   0   0   0   0   0   0   0  11   0  25   0  13 501   0   0   0   0
+    0   0   0]
+ [  0  15   0  12   0   0   0   0   0   0   0   0   0   0 519   0   0   4
+    0   0   0]
+ [  2   0   0   0   0   0   0   0   0   0   0   0   0   0   0 548   0   0
+    0   0   0]
+ [  0   0   0   0   0  64   0   0   0   0   0   0   0   0   0   0 480   0
+    0   6   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 550
+    0   0   0]
+ [  0   0   0   4   0   0   0   0   0   0   0   0   0   0   8   0   0   0
+  538   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   19 531   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0 550]]
+
+Quantidade total de amostras de teste:  11548
+
+Classification Report
+
+              precision    recall  f1-score   support
+
+           A       0.98      0.96      0.97       579
+           B       0.91      0.98      0.95       562
+           C       0.84      0.97      0.90       583
+           D       0.96      1.00      0.98       550
+           E       0.96      0.92      0.94       574
+           F       0.87      0.98      0.92       450
+           G       1.00      0.99      0.99       550
+           I       0.99      1.00      0.99       550
+           L       0.98      0.99      0.99       550
+           M       0.89      0.90      0.90       550
+           N       0.89      0.86      0.87       550
+           O       0.97      0.80      0.87       550
+           P       0.98      1.00      0.99       550
+           Q       0.93      0.91      0.92       550
+           R       0.98      0.94      0.96       550
+           S       0.99      1.00      1.00       550
+           T       1.00      0.87      0.93       550
+           U       0.97      1.00      0.99       550
+           V       0.97      0.98      0.97       550
+           W       0.99      0.97      0.98       550
+           Y       0.99      1.00      0.99       550
+
+    accuracy                           0.95     11548
+   macro avg       0.95      0.95      0.95     11548
+weighted avg       0.95      0.95      0.95     11548
+
+[INFO] salvando matriz de confusão...
+[INFO] plottando gráficos...
+
+[INFO] gerando imagem do modelo de camadas...
+
+[INFO] [FIM]20210318_1716
