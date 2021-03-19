@@ -6,7 +6,7 @@ Created on Sat Mar 13 15:37:31 2021
 
 # Bibliotecas
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import BatchNormalization, Conv2D, MaxPool2D
+from tensorflow.keras.layers import Conv2D, MaxPool2D
 from tensorflow.keras.layers import Activation, Flatten, Dropout, Dense
 from tensorflow.keras import backend as K
 

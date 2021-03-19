@@ -13,7 +13,6 @@ from cf_matrix import make_confusion_matrix
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import classification_report, confusion_matrix
-from tensorflow.keras.callbacks import ReduceLROnPlateau
 from tensorflow.keras.utils import plot_model
 from keras.models import load_model
 
