@@ -1,7 +1,7 @@
 """
-Created on Sat Mar 13 15:37:31 2021
+Created on Sat Mar 13 2021
 
-@author: junio
+@author: William M.C. Junior
 """
 ##############################################################################
 
@@ -25,6 +25,7 @@ import time
 ##############################################################################
 
 # definindo funções para obter data e hora dos treinamentos dos modelos
+
 def ObterDataFormatada():
     return str('{date:%Y%m%d_%H%M}').format(date = datetime.datetime.now())
 
@@ -74,7 +75,6 @@ test_generator = test_datagen.flow_from_directory(
 
 ##############################################################################
 
-# imprimindo informações de labels (classes) e tamanho de batch
 print("[INFO] informações dos dados de treino...\n")
 
 image_batch_train, label_batch_train = next(iter(train_generator))
@@ -90,15 +90,20 @@ print(dataset_labels)
 ##############################################################################
 
 print("\n[INFO] compilando o modelo...\n")
+
 inicio = time.time()
 
 # chamando método construtor do modelo da classe Cnn
 model = Cnn.build(64, 64, 3, train_generator.num_classes)
+
+# definindo o otimizador
 opt = Adam()
+
 model.compile(optimizer = opt, loss = "categorical_crossentropy",
               metrics = ["acc"])
 
 print("\n[INFO] imprimindo estrutura do modelo...\n")
+
 model.summary()
 
 ##############################################################################
@@ -110,7 +115,8 @@ steps_per_epoch = np.ceil(train_generator.samples/train_generator.batch_size)
 val_steps_per_epoch = np.ceil(valid_generator.samples/valid_generator.batch_size)
 
 print("\n[INFO] treinando o modelo...\n")
-h = model.fit(train_generator, epochs=10, verbose=2,
+
+h = model.fit(train_generator, epochs=50, verbose=2,
               steps_per_epoch = steps_per_epoch,
               validation_data = valid_generator,
               validation_steps=val_steps_per_epoch).history
@@ -132,11 +138,13 @@ print("[INFO] tempo de execução do modelo: %.1f min" %(ObterTempoMin(inicio, f
 ##############################################################################
 
 # carregando o modelo salvo para testar o conjunto de teste
+
 model = load_model('output/models/' + FILE_NAME + file_date + '.h5')
 
 ##############################################################################
 
 # imprimindo informações de labels (classes) e tamanho de batch
+
 print("[INFO] informações dos dados de teste...\n")
 
 val_image_batch, val_label_batch = next(iter(test_generator))
@@ -168,11 +176,13 @@ Y_pred = model.predict(test_generator, val_steps_per_epoch)
 y_pred = np.argmax(Y_pred, axis=1)
 
 print('\nConfusion Matrix\n')
+
 print(confusion_matrix(test_generator.classes, y_pred))
 
 print('\nQuantidade total de amostras de teste: ', test_generator.samples)
 
 print('\nClassification Report\n')
+
 print(classification_report(test_generator.classes, y_pred, target_names=CLASSES))
 
 ##############################################################################
@@ -180,10 +190,12 @@ print(classification_report(test_generator.classes, y_pred, target_names=CLASSES
 print("[INFO] salvando matriz de confusão...\n")
 
 # chamando a função para construir a matriz de confusão formatada
+
 cm = confusion_matrix(test_generator.classes, y_pred)
 make_confusion_matrix(cm, figsize=(20,10), categories=CLASSES)
 
 # salvando matriz de confusão conforme o diretório especificado
+
 plt.savefig('output/confusion_matrix/' + FILE_NAME + file_date + '.png')
 
 ##############################################################################
