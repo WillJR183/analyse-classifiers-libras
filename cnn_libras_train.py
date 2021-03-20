@@ -38,12 +38,13 @@ print("[INFO][INICIO] executando Script...\n" + ObterDataFormatada() + '\n')
 print("[INFO] preparando e aumentando conjunto de dados...\n")
 
 IMAGE_SHAPE = (64,64) # definindo dimensão da imagem
+CLASSES = ['A','B','C','D','E','F','G','I','L','M','N','O','P','Q','R','S','T','U','V','W','Y']
 
 DATA_ROOT = 'dataset' # diretório principal
 DATA_TRAINING_DIR = str(DATA_ROOT + '\\libras_training') # dir de treino/val
 DATA_TEST_DIR = str(DATA_ROOT + '\\libras_test') # dir de teste
 
-datagen_kwargs = dict(rescale=1./255, validation_split=.20)
+datagen_kwargs = dict(rescale = 1./255, validation_split = .20)
 
 valid_datagen = ImageDataGenerator(**datagen_kwargs)
 train_datagen = ImageDataGenerator(**datagen_kwargs)
@@ -53,23 +54,23 @@ test_datagen = ImageDataGenerator(**datagen_kwargs)
 
 train_generator = train_datagen.flow_from_directory(
     DATA_TRAINING_DIR,
-    subset='training',
-    target_size=IMAGE_SHAPE,
-    shuffle=True,
-    classes=['A','B','C','D','E','F','G','I','L','M','N','O','P','Q','R','S','T','U','V','W','Y'])
+    subset = 'training',
+    target_size = IMAGE_SHAPE,
+    shuffle = True,
+    classes = CLASSES)
 
 valid_generator = valid_datagen.flow_from_directory(
     DATA_TRAINING_DIR,
-    subset='validation',
-    target_size=IMAGE_SHAPE,
-    shuffle=True,
-    classes=['A','B','C','D','E','F','G','I','L','M','N','O','P','Q','R','S','T','U','V','W','Y'])
+    subset = 'validation',
+    target_size = IMAGE_SHAPE,
+    shuffle = True,
+    classes = CLASSES)
 
 test_generator = test_datagen.flow_from_directory(
     DATA_TEST_DIR,
-    target_size=IMAGE_SHAPE,
-    shuffle=False,
-    classes=['A','B','C','D','E','F','G','I','L','M','N','O','P','Q','R','S','T','U','V','W','Y'])
+    target_size = IMAGE_SHAPE,
+    shuffle = False,
+    classes = CLASSES)
 
 ##############################################################################
 
@@ -94,8 +95,8 @@ inicio = time.time()
 # chamando método construtor do modelo da classe Cnn
 model = Cnn.build(64, 64, 3, train_generator.num_classes)
 opt = Adam()
-model.compile(optimizer=opt, loss="categorical_crossentropy",
-              metrics=["acc"])
+model.compile(optimizer = opt, loss = "categorical_crossentropy",
+              metrics = ["acc"])
 
 print("\n[INFO] imprimindo estrutura do modelo...\n")
 model.summary()
@@ -109,7 +110,7 @@ steps_per_epoch = np.ceil(train_generator.samples/train_generator.batch_size)
 val_steps_per_epoch = np.ceil(valid_generator.samples/valid_generator.batch_size)
 
 print("\n[INFO] treinando o modelo...\n")
-h = model.fit(train_generator, epochs=50, verbose=2,
+h = model.fit(train_generator, epochs=10, verbose=2,
               steps_per_epoch = steps_per_epoch,
               validation_data = valid_generator,
               validation_steps=val_steps_per_epoch).history
@@ -171,17 +172,16 @@ print(confusion_matrix(test_generator.classes, y_pred))
 
 print('\nQuantidade total de amostras de teste: ', test_generator.samples)
 
-target_names = ['A','B','C','D','E','F','G','I','L','M','N','O','P','Q','R','S','T','U','V','W','Y']
 print('\nClassification Report\n')
-print(classification_report(test_generator.classes, y_pred, target_names=target_names))
+print(classification_report(test_generator.classes, y_pred, target_names=CLASSES))
 
 ##############################################################################
 
-print("[INFO] salvando matriz de confusão...")
+print("[INFO] salvando matriz de confusão...\n")
 
 # chamando a função para construir a matriz de confusão formatada
 cm = confusion_matrix(test_generator.classes, y_pred)
-make_confusion_matrix(cm, figsize=(20,10), categories=target_names)
+make_confusion_matrix(cm, figsize=(20,10), categories=CLASSES)
 
 # salvando matriz de confusão conforme o diretório especificado
 plt.savefig('output/confusion_matrix/' + FILE_NAME + file_date + '.png')
@@ -193,10 +193,10 @@ print("[INFO] plottando gráficos...\n")
 plt.style.use("ggplot")
 plt.figure()
 
-plt.plot(h["loss"], label="train_loss")
-plt.plot(h["val_loss"], label="val_loss")
-plt.plot(h["acc"], label="train_acc")
-plt.plot(h["val_acc"], label="val_acc")
+plt.plot(h["loss"], label = "train_loss")
+plt.plot(h["val_loss"], label = "val_loss")
+plt.plot(h["acc"], label = "train_acc")
+plt.plot(h["val_acc"], label = "val_acc")
 
 plt.title("Acurácia e Perca por Época")
 plt.xlabel("Épocas")
