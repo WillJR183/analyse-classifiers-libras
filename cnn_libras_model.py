@@ -1,7 +1,7 @@
 """
-Created on Sat Mar 13 15:37:31 2021
+Created on Sat Mar 13 2021
 
-@author: junio
+@author: William M.C. Junior
 """
 
 # Bibliotecas
