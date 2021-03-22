@@ -34,7 +34,7 @@ def ObterTempoMin(inicio, fim):
 
 ##############################################################################
 
-print("[INFO][INICIO] executando Script...\n" + ObterDataFormatada() + '\n')
+print("[INFO][INICIO] executando script..." + ObterDataFormatada() + '\n')
 
 print("[INFO] preparando e aumentando conjunto de dados...\n")
 
@@ -45,11 +45,15 @@ DATA_ROOT = 'dataset' # diretório principal
 DATA_TRAINING_DIR = str(DATA_ROOT + '\\libras_training') # dir de treino/val
 DATA_TEST_DIR = str(DATA_ROOT + '\\libras_test') # dir de teste
 
-datagen_kwargs = dict(rescale = 1./255, validation_split = .20)
+# Image generator para gerar instâncias de imagens com variações
+train_datagen = ImageDataGenerator(rescale = 1./255, shear_range = 0.2,
+                                   zoom_range = 0.2, horizontal_flip = True)
 
-valid_datagen = ImageDataGenerator(**datagen_kwargs)
-train_datagen = ImageDataGenerator(**datagen_kwargs)
-test_datagen = ImageDataGenerator(**datagen_kwargs)
+# aplicando apenas redimensionamento dos pixels e dividindo parte da validação
+valid_datagen = ImageDataGenerator(rescale = 1./255, validation_split = .20)
+
+# aplicando apenas redimensionamento dos pixels
+test_datagen = ImageDataGenerator(rescale = 1./255)
 
 # flow_from_diretory para separar os conjuntos conforme as pastas
 
@@ -116,7 +120,7 @@ val_steps_per_epoch = np.ceil(valid_generator.samples/valid_generator.batch_size
 
 print("\n[INFO] treinando o modelo...\n")
 
-h = model.fit(train_generator, epochs=50, verbose=2,
+h = model.fit(train_generator, epochs = 50, verbose = 2,
               steps_per_epoch = steps_per_epoch,
               validation_data = valid_generator,
               validation_steps=val_steps_per_epoch).history
