@@ -23,7 +23,7 @@ class Cnn:
         
         # INPUT->CONV->POOL->CONV->POOL->CONV->POOL->FLATTEN->DENSE->OUTPUT
         
-        model.add(Conv2D(16, (3,3), padding="same", input_shape=input_shape))
+        model.add(Conv2D(32, (3,3), padding="same", input_shape=input_shape))
         model.add(Activation("relu"))
         model.add(MaxPool2D((2,2)))
         model.add(Dropout(0.25))
